@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    <!-- 환경 스택 -->
+	<environments default="default">
+		<!-- 환경 -->
+		<environment id="default">
+			<!-- 트랜잭션 관리자 -->
+			<transactionManager type="JDBC" />
+			<!-- 데이터 소스 -->
+			<dataSource type="UNPOOLED">
+				<property name="driver" value="com.mysql.cj.jdbc.Driver" />
+				<property name="url" value="jdbc:mysql://localhost/mogumogu" />
+				<property name="username" value="mogumogu" />
+				<property name="password" value="1234" />
+			</dataSource>
+		</environment>
+	</environments>
+
+	<mappers>
+		<!-- 마이바티스 매퍼 XML 파일 -->
+		<mapper resource="com/example/start/mappers/ShopMapper.xml" />
+	</mappers>
+</configuration>
