@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.mybatis.persistence.ShopMapper">
+	<insert id="insert" parameterType="shop">
+		INSERT INTO SHOP (SHOP_NO, SHOP_NAME, SHOP_LOCATION, SHOP_STATUS)
+		VALUES (#{shopNo}, #{shopName}, #{shopLocation}, #{shopStatus})
+	</insert>
+
+	<select id="select" parameterType="shop" resultType="shop">
+		SELECT SHOP_NO, SHOP_NAME, SHOP_LOCATION, SHOP_STATUS
+		FROM SHOP
+		WHERE SHOP_NO = #{shopNo}
+	</select>
+
+	<update id="update" parameterType="shop">
+		UPDATE SHOP
+		SET SHOP_STATUS = #{shopStatus}
+		WHERE SHOP_NO = #{shopNo}
+	</update>
+
+	<delete id="delete" parameterType="shop">
+		DELETE FROM SHOP
+		WHERE SHOP_NO = #{shopNo}
+	</delete>
+</mapper>
