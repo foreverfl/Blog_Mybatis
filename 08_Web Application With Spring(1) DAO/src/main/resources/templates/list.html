@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<head>
+<title>::: Spring with MyBatis :::</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+	<h3>가게 목록</h3>
+
+	<table style="width: 100%;" border="1">
+		<thead>
+			<tr>
+				<th>번호</th>
+				<th>가게명</th>
+				<th>위치</th>
+				<th>상태</th>
+				<th>보기</th>
+				<th>수정</th>
+				<th>삭제</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="shop : ${shop.listShop}">
+				<td style="text-align: center;" th:text="${shop.shopNo}"></td>
+				<td style="text-align: left;" th:text="${shop.shopName}"></td>
+				<td style="text-align: left;" th:text="${shop.shopLocation}">
+				<td style="text-align: center;" th:text="${shop.shopStatus}"></td>
+				<td style="text-align: center;"><a
+					th:href="@{/shop/view/${shop.shopNo}"> <input type="button"
+						id="button_view" name="button_view" value="보기" />
+				</a></td>
+				<td style="text-align: center;"><a
+					th:href="@{/shop/edit/${shop.shopNo}}"><input type="button"
+						id="button_edit" name="button_edit" value="수정" /> </a></td>
+				<td style="text-align: center;"><a
+					th:href=@{/shop/remove/${shop.shopNo}}> <input type="button"
+						id="button_remove" name="button_remove" value="삭제" />
+				</a></td>
+			</tr>
+
+			<tr th:if="${empty listShop}">
+				<td style="text-align: center;" colspan="7">목록이 존재하지 않습니다.</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<div style="text-align: right; padding-top: 10px;">
+		<a th:href="@{/shop/add}"> <input type="button" id="button_add"
+			name="button_add" value="등록" />
+		</a>
+	</div>
+</body>
+</html>

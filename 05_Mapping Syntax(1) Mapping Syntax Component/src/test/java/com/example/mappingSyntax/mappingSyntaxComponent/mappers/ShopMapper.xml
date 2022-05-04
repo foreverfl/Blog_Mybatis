@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper
+	namespace="com.example.mappingSyntax.mappingSyntaxComponent.mappers.ShopMapper">
+	<!-- delete -->
+	<delete id="delete">
+		TRUNCATE TABLE SHOP	
+	</delete>
+	
+	<!-- insert -->
+	<insert id="insertShop" useGeneratedKeys="true" parameterType="java.util.HashMap">
+		INSERT INTO SHOP
+		 	(SHOP_NO, SHOP_NAME, SHOP_LOCATION, SHOP_STATUS)
+		VALUES
+			(#{shopNo}, #{shopName}, #{shopLocation}, #{shopStatus})
+	</insert>
+	
+	<!-- update -->
+	<update id="update" parameterType="java.util.HashMap">
+		UPDATE SHOP
+		SET SHOP_STATUS= #{shopStatus}
+		WHERE SHOP_LOCATION = #{shopLocation}
+	</update>
+	
+	<!-- associated select -->
+	<select id="associatedSelect" parameterType="int"
+		resultMap="shopResultMap">
+		SELECT SHOP_NO, SHOP_NAME, SHOP_LOCATION, SHOP_STATUS
+		FROM SHOP
+		WHERE SHOP_NO = #{shopNo}
+	</select>
+
+	<resultMap id="shopResultMap" type="java.util.HashMap">
+		<id column="SHOP_NO" property="shopNo" />
+		<result column="SHOP_NAME" property="shopName" />
+		<result column="SHOP_LOCATION" property="shopLocation" />
+		<result column="SHOP_STATUS" property="shopStatus" />
+		<association select="selectShopAmount"
+			column="{shopNo=SHOP_NO,shopStatus=SHOP_STATUS}"
+			property="shopAmount" />
+	</resultMap>
+
+	<select id="selectShopAmount" resultType="int">
+	<!-- parameterType="int" is excluded -->
+		SELECT SHOP_AMOUNT
+		FROM SHOP_SALES
+		WHERE SHOP_NO = #{shopNo} AND SHOP_STATUS = #{shopStatus}
+	</select>
+	
+	<!-- associated result -->	
+	<select id="selectShopJoinToy" parameterType="int" resultMap="shopJoinToyResultMap">
+		SELECT S.SHOP_NO, S.SHOP_NAME, S.SHOP_LOCATION, S.SHOP_STATUS,
+				T.TOY_NO, T.TOY_NAME, T.TOY_PRICE
+		FROM SHOP S LEFT OUTER JOIN TOY T
+			ON S.SHOP_NO = T.SHOP_NO
+			WHERE S.SHOP_NO = #{shopNo}
+	</select>
+	
+	<resultMap id="shopJoinToyResultMap" type="java.util.HashMap">
+		<id column="SHOP_NO" property="shopNo"/>
+		<result column="SHOP_NAME" property="shopName"/>
+		<result column="SHOP_LOCATION" property="shopLocation"/>
+		<result column="SHOP_STATUS" property="shopStatus"/>
+		<collection resultMap="toyResultMap" property="toys" javaType="java.util.ArrayList" ofType="java.util.HashMap"/>
+	</resultMap>
+	
+		<resultMap id="toyResultMap" type="java.util.HashMap">
+		<id column="TOY_NO" property="toyNo"/>
+		<result column="TOY_NAME" property="toyName"/>
+		<result column="TOY_PRICE" property="toyPrice"/>
+	</resultMap>
+	
+</mapper>
