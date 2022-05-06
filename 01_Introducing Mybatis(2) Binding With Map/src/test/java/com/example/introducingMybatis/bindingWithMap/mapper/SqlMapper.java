@@ -1,4 +1,4 @@
-package com.example.introducingMybatis.mapper;
+package com.example.introducingMybatis.bindingWithMap.mapper;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -17,11 +17,11 @@ import java.util.regex.Pattern;
 
 public class SqlMapper {
 	// database property file path
-	private String configurationResource = "com/example/introducingMybatis/resources/config-jdbc.properties";
+	private String configurationResource = "com/example/introducingMybatis/bindingWithMap/resources/config-jdbc.properties";
 	private Properties configuration = new Properties();
 
 	// query property file path
-	private String sqlResource = "com/example/introducingMybatis/resources/sql-inline.properties";
+	private String sqlResource = "com/example/introducingMybatis/bindingWithMap/resources/sql-inline.properties";
 	private Properties sql = new Properties();
 
 	private Connection connection;

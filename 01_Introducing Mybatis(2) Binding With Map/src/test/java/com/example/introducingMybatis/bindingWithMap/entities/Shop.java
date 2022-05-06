@@ -1,4 +1,4 @@
-package com.example.introducingMybatis.entities;
+package com.example.introducingMybatis.bindingWithMap.entities;
 
 import java.io.Serializable;
 

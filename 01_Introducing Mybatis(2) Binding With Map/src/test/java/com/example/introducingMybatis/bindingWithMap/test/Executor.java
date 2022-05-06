@@ -1,11 +1,11 @@
-package com.example.introducingMybatis.test;
+package com.example.introducingMybatis.bindingWithMap.test;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
 
-import com.example.introducingMybatis.entities.Shop;
-import com.example.introducingMybatis.mapper.Application;
+import com.example.introducingMybatis.bindingWithMap.entities.Shop;
+import com.example.introducingMybatis.bindingWithMap.mapper.Application;
 
 public class Executor {
 	private static final Logger logger = Logger.getLogger(Executor.class.getName());

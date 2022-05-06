@@ -1,4 +1,4 @@
-package com.example.introducingMybatis;
+package com.example.introducingMybatis.bindingWithMap;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

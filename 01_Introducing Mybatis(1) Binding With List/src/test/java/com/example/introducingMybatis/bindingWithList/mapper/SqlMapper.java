@@ -107,7 +107,6 @@ public class SqlMapper {
 
 	protected String parameterBindingByList(String sqlId, List<Object> parameters) throws Exception {
 		try {
-			// 쿼리문 반환
 			String query = sqlById(sqlId);
 
 			String[] querySplit = query.split("[?]");
