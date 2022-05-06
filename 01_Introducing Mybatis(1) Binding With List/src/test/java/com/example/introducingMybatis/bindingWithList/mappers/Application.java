@@ -1,4 +1,4 @@
-package com.example.introducingMybatis.bindingWithList.mapper;
+package com.example.introducingMybatis.bindingWithList.mappers;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

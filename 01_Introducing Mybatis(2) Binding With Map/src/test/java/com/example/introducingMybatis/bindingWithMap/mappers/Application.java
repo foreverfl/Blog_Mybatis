@@ -1,4 +1,4 @@
-package com.example.introducingMybatis.bindingWithMap.mapper;
+package com.example.introducingMybatis.bindingWithMap.mappers;
 
 import java.util.Map;
 

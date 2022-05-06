@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import com.example.introducingMybatis.bindingWithList.entities.Shop;
-import com.example.introducingMybatis.bindingWithList.mapper.Application;
+import com.example.introducingMybatis.bindingWithList.mappers.Application;
 
 
 

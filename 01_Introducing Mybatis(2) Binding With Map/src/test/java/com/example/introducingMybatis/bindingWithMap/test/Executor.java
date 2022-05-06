@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 import com.example.introducingMybatis.bindingWithMap.entities.Shop;
-import com.example.introducingMybatis.bindingWithMap.mapper.Application;
+import com.example.introducingMybatis.bindingWithMap.mappers.Application;
 
 public class Executor {
 	private static final Logger logger = Logger.getLogger(Executor.class.getName());

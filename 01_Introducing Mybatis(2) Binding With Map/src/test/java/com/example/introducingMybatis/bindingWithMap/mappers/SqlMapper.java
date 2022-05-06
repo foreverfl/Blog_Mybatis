@@ -1,4 +1,4 @@
-package com.example.introducingMybatis.bindingWithMap.mapper;
+package com.example.introducingMybatis.bindingWithMap.mappers;
 
 import java.io.IOException;
 import java.io.InputStream;
