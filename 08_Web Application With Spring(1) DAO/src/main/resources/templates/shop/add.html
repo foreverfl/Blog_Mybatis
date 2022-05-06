@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<title>::: Spring with MyBatis :::</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript">
+	function add() {
+		document.getElementById('form').submit();
+	};
+</script>
+</head>
+
+<body>
+	<h3>가게 등록</h3>
+
+	<form id="form" name="form" th:action="@{/shop/add}" method="post">
+		<table style="width: 100%;" border="1">
+			<thead>
+				<tr>
+					<th width="10%">구분</th>
+					<th>내용</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>가게명</td>
+					<td style="text-align: left;"><input type="text" id="shopName"
+						name="shopName" maxlength="20" style="width: 200px;" /></td>
+				</tr>
+				<tr>
+					<td>위치</td>
+					<td style="text-align: left;"><input type="text"
+						id="shopLocation" name="shopLocation" maxlength="100"
+						style="width: 200px;" /></td>
+				</tr>
+				<tr>
+					<td>상태</td>
+					<td style="text-align: left;"><select id="shopStatus"
+						name="shopStatus">
+							<option value="">선택</option>
+							<option value="Y">Y</option>
+							<option value="N">N</option>
+					</select></td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+
+	<div style="text-align: right; padding-top: 10px;">
+		<input type="button" id="button_add" name="button_add" value="등록"
+			title="등록" onclick="add();" />
+		<a th:href="@{/shop/list}">
+		<input type="button" id="button_list" name="button_list" value="목록" />
+		</a>
+	</div>
+</body>
+</html>

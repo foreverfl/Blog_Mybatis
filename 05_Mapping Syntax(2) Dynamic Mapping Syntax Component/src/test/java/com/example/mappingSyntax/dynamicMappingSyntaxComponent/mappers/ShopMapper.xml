@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper
+	namespace="com.example.mappingSyntax.dynamicMappingSyntaxComponent.mappers.ShopMapper">
+	
+	<!-- delete -->
+	<delete id="delete">
+		TRUNCATE TABLE SHOP	
+	</delete>
+	
+	<!-- insert -->
+	<insert id="insertShop" parameterType="java.util.HashMap">
+		INSERT INTO SHOP
+		 	(SHOP_NO, SHOP_NAME, SHOP_LOCATION, SHOP_STATUS)
+		VALUES
+			(#{shopNo}, #{shopName}, #{shopLocation}, #{shopStatus})
+	</insert>
+	
+	<!-- <if> -->
+	<update id="update_if" parameterType="java.util.HashMap">
+		UPDATE SHOP
+		<if test="shopNo == 4 or shopNo == 5 or shopNo == 6">
+		SET SHOP_STATUS = #{shopStatus}
+		WHERE SHOP_NO = #{shopNo}
+		</if>
+		<if test="shopNo != 4 and shopNo != 5 and shopNo != 6">
+		SET SHOP_LOCATION = #{shopLocation}
+		WHERE SHOP_NO = #{shopNo}
+		</if>		
+	</update>
+	
+	<!-- <choose>, <when>, <otherwise> -->
+	<update id="update_choose" parameterType="java.util.HashMap">
+		UPDATE SHOP
+		<choose>
+		<when test="shopNo == 7 or shopNo == 8">
+		SET SHOP_NAME = #{shopName}
+		WHERE SHOP_NO = #{shopNo}
+		</when>
+		<when test="shopNo == 9 or shopNo == 10">
+		SET SHOP_STATUS = #{shopStatus}
+		WHERE SHOP_NO = #{shopNo}
+		</when>
+		<otherwise>
+		SET SHOP_LOCATION = #{shopLocation}
+		WHERE SHOP_NO = #{shopNo}
+		</otherwise>
+		</choose>	
+	</update>
+	
+	<!-- <foreach> -->
+	<insert id="insert_foreach" parameterType="java.util.List">
+		INSERT INTO SHOP(SHOP_NO, SHOP_NAME, SHOP_LOCATION, SHOP_STATUS)
+		VALUES
+		<foreach collection="list" item="item" separator=",">
+		(#{item.shopNo}, #{item.shopName}, #{item.shopLocation}, #{item.shopStatus})
+		</foreach>
+	</insert>
+	
+	<!-- <sql> <include> -->
+	
+</mapper>

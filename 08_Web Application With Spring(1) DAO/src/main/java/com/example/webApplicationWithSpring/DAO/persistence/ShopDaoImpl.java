@@ -18,7 +18,7 @@ public class ShopDaoImpl implements ShopDao {
 	@Override
 	public List<Shop> list(Shop shop) {
 		// 마이바티스 객체 호출
-		return this.sqlSessionTemplate.selectList("com.example.webApplicationWithSpring.DAO.persistence.ShopMapper.list",
+		return this.sqlSessionTemplate.selectList("com.example.webApplicationWithSpring.DAO.mybatis.ShopMapper.list",
 				shop);
 	}
 
@@ -26,14 +26,14 @@ public class ShopDaoImpl implements ShopDao {
 	@Override
 	public void insert(Shop shop) {
 		// 마이바티스 객체 호출
-		this.sqlSessionTemplate.insert("com.example.webApplicationWithSpring.DAO.persistence.ShopMapper.insert", shop);
+		this.sqlSessionTemplate.insert("com.example.webApplicationWithSpring.DAO.mybatis.ShopMapper.insert", shop);
 	}
 
 	/* 가게 조회 */
 	@Override
 	public Shop select(String shopNo) {
 		// 마이바티스 객체 호출
-		return this.sqlSessionTemplate.selectOne("com.example.webApplicationWithSpring.DAO.persistence.ShopMapper.select",
+		return this.sqlSessionTemplate.selectOne("com.example.webApplicationWithSpring.DAO.mybatis.ShopMapper.select",
 				shopNo);
 	}
 
@@ -41,13 +41,13 @@ public class ShopDaoImpl implements ShopDao {
 	@Override
 	public void update(Shop shop) {
 		// 마이바티스 객체 호출
-		this.sqlSessionTemplate.update("com.example.webApplicationWithSpring.DAO.persistence.ShopMapper.update", shop);
+		this.sqlSessionTemplate.update("com.example.webApplicationWithSpring.DAO.mybatis.ShopMapper.update", shop);
 	}
 
 	/* 가게 삭제 */
 	@Override
 	public void delete(String shopNo) {
 		// 마이바티스 객체 호출
-		this.sqlSessionTemplate.delete("com.example.webApplicationWithSpring.DAO.persistence.ShopMapperdelete", shopNo);
+		this.sqlSessionTemplate.delete("com.example.webApplicationWithSpring.DAO.mybatis.ShopMapper.delete", shopNo);
 	}
 }
